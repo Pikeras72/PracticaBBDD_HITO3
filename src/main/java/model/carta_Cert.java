@@ -38,6 +38,10 @@ public class carta_Cert {
         this.DNI_Usuario_Identificado_Emisor = DNI_Usuario_Identificado_Emisor;
     }
 
+    public carta_Cert() {
+        //requerido por Hibernate
+    }
+
     //getters y setters
 
     public String getID_carta_Cert() {
