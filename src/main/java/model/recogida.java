@@ -1,31 +1,65 @@
 package model;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
+@Entity
+@Table(name = "recogida")
 public class recogida {
-
+    @Id
+    @Column(name = "ID_Recogida")
     private int ID_Recogida;
+    @Column(name = "Fecha_recogida", nullable = false)
     private Date Fecha_recogida;
-    private int Num;
-    private int Piso;
-    private char Letra;
-    private int Portal;
+
+    @JoinColumn(
+            name = "Piso"
+    )private int Piso;
+
+    @JoinColumn(
+            name = "Portal"
+    )private int Portal;
+    @JoinColumn(
+            name = "Letra"
+    )private char Letra;
+
+    @JoinColumn(
+            name = "Num"
+    )private int Num;
+
+    @JoinColumn(
+            name = "Nombre_Calle"
+    )private String Nombre_Calle;
+
+    @JoinColumn(
+            name = "Nombre_Municipio"
+    )private String Nombre_Municipio;
+    @ManyToOne(optional = false,cascade = {CascadeType.ALL})
+    @JoinColumn(name = "cartero")
     private String DNI_Cartero;
+    @ManyToOne(optional = false, cascade = {CascadeType.ALL})
+    @JoinColumn(name = "usuarioVerificado")
     private String DNI_Usuario_Identificado;
-    private String Nombre_Calle;
-    private String Nombre_Municipio;
+
+    @OneToMany(mappedBy = "recogida", cascade = CascadeType.ALL)
+    private Set<paquete> paquetes;
 
     public recogida(int ID_Recogida, Date fecha_recogida, int num, int piso, char letra, int portal, String DNI_Cartero, String DNI_Usuario_Identificado, String nombre_Calle, String nombre_Municipio) {
         this.ID_Recogida = ID_Recogida;
-        Fecha_recogida = fecha_recogida;
-        Num = num;
-        Piso = piso;
-        Letra = letra;
-        Portal = portal;
+        this.Fecha_recogida = fecha_recogida;
+        this.Num = num;
+        this.Piso = piso;
+        this.Letra = letra;
+        this.Portal = portal;
         this.DNI_Cartero = DNI_Cartero;
         this.DNI_Usuario_Identificado = DNI_Usuario_Identificado;
-        Nombre_Calle = nombre_Calle;
-        Nombre_Municipio = nombre_Municipio;
+        this.Nombre_Calle = nombre_Calle;
+        this.Nombre_Municipio = nombre_Municipio;
+    }
+
+    public recogida() {
+        //requerido por Hibernate
     }
 
     //getters y setters
