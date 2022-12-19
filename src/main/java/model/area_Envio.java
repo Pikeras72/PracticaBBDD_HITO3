@@ -20,7 +20,7 @@ public class area_Envio {
 
     public area_Envio(String ID_Area_Envio, String cod_Oficina) {
         this.ID_Area_Envio = ID_Area_Envio;
-        Cod_Oficina = cod_Oficina;
+        this.Cod_Oficina = cod_Oficina;
     }
 
     //getters y setters
