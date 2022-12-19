@@ -1,27 +1,61 @@
 package model;
 
-public class usuario_Generico {
+import javax.persistence.*;
+import java.util.Set;
 
+@Entity
+@Table(name = "usuario_Generico")
+public class usuario_Generico {
+    @Id
+    @Column(name = "ID_Usuario_Generico")
     private int ID_Usuario_Generico;
+    @Column(name = "Nombre", nullable = false)
     private String Nombre;
+    @Column(name = "Apellidos", nullable = false)
     private String Apellidos;
-    private int Num;
-    private int Piso;
-    private char Letra;
-    private int Portal;
-    private String Nombre_Calle;
-    private String Nombre_Municipio;
+    @JoinColumn(
+            name = "Piso"
+    )private int Piso;
+
+    @JoinColumn(
+            name = "Portal"
+    )private int Portal;
+    @JoinColumn(
+            name = "Letra"
+    )private char Letra;
+
+    @JoinColumn(
+            name = "Num"
+    )private int Num;
+
+    @JoinColumn(
+            name = "Nombre_Calle"
+    )private String Nombre_Calle;
+
+    @JoinColumn(
+            name = "Nombre_Municipio"
+    )private String Nombre_Municipio;
+
+    @OneToMany(mappedBy = "usuario_Generico", cascade = CascadeType.ALL)
+    private Set<paquete> paquetes;
+
+    @OneToMany(mappedBy = "usuario_Generico", cascade = CascadeType.ALL)
+    private Set<paquete> paquetes_Emisor;
 
     public usuario_Generico(int ID_Usuario_Generico, String nombre, String apellidos, int num, int piso, char letra, int portal, String nombre_Calle, String nombre_Municipio) {
         this.ID_Usuario_Generico = ID_Usuario_Generico;
-        Nombre = nombre;
-        Apellidos = apellidos;
-        Num = num;
-        Piso = piso;
-        Letra = letra;
-        Portal = portal;
-        Nombre_Calle = nombre_Calle;
-        Nombre_Municipio = nombre_Municipio;
+        this.Nombre = nombre;
+        this.Apellidos = apellidos;
+        this.Num = num;
+        this.Piso = piso;
+        this.Letra = letra;
+        this.Portal = portal;
+        this.Nombre_Calle = nombre_Calle;
+        this.Nombre_Municipio = nombre_Municipio;
+    }
+
+    public usuario_Generico() {
+        //requerido
     }
 
     //getters y setters
