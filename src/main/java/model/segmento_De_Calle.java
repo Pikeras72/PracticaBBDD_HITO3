@@ -14,7 +14,7 @@ public class segmento_De_Calle {
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "Nombre_Calle")
     private calle Nombre_Calle;
-
+    //PREGUNTAR
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "Nombre_Municipio")
     private municipio Nombre_Municipio;
