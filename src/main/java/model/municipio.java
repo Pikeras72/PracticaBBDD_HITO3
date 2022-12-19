@@ -16,15 +16,18 @@ public class municipio {
     private String Nombre_Provincia;
 
     @OneToMany(mappedBy = "municipio", cascade = CascadeType.ALL)
-    private Set<calle> calle;
+    private Set<calle> calles;
+
+    @OneToMany(mappedBy = "municipio", cascade = CascadeType.ALL)
+    private Set<centro_De_Clasificacion> centros_De_Clasificacion;
 
     public municipio () {
         // requerido por Hibernate
     }
 
     public municipio(String nombre_Municipio, String nombre_Provincia) {
-        Nombre_Municipio = nombre_Municipio;
-        Nombre_Provincia = nombre_Provincia;
+        this.Nombre_Municipio = nombre_Municipio;
+        this.Nombre_Provincia = nombre_Provincia;
     }
 
     //getters y setters
