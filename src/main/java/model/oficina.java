@@ -1,8 +1,17 @@
 package model;
 
-public class oficina {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "oficina")
+public class oficina {
+    @Id
+    @Column(name = "Cod_Oficina")
     private String Cod_Oficina;
+
     private String  Nombre_Municipio;
     private int Cod_Centro_Clas;
     private int Num;
@@ -20,6 +29,10 @@ public class oficina {
         Letra = letra;
         Portal = portal;
         Nombre_Calle = nombre_Calle;
+    }
+
+    public oficina() {
+        //requerido
     }
 
     //getters y setters
