@@ -1,14 +1,33 @@
 package model;
 
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
+@Entity
+@Table(name = "reparto")
 public class reparto {
 
+    @Id
+    @Column(name = "ID_Reparto")
     private int ID_Reparto;
+    @Column(name = "Fecha_Creacion", nullable = false)
     private Date Fecha_Creacion;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "DNI_Cartero")
     private String DNI_Cartero;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Matricula")
     private String Matricula;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_Ruta")
     private int ID_Ruta;
+
+    @OneToMany(mappedBy = "reparto", cascade = CascadeType.ALL)
+    private Set<carta_Cert> cartas_Cert;
+
+    @OneToMany(mappedBy = "reparto", cascade = CascadeType.ALL)
+    private Set<paquete> paquetes;
 
     public reparto(int ID_Reparto, Date fecha_Creacion, String DNI_Cartero, String matricula, int ID_Ruta) {
         this.ID_Reparto = ID_Reparto;
@@ -16,6 +35,10 @@ public class reparto {
         this.DNI_Cartero = DNI_Cartero;
         Matricula = matricula;
         this.ID_Ruta = ID_Ruta;
+    }
+
+    public reparto() {
+        //requerido
     }
 
     //getters y setters
