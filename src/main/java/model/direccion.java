@@ -1,21 +1,49 @@
 package model;
 
+import javax.persistence.*;
+import java.util.Set;
+
 public class direccion {
 
+    @Id
+    @Column(name = "Num")
     private int Num;
+
+    @Id
+    @Column(name = "Piso")
     private int Piso;
+
+    @Id
+    @Column(name = "Letra")
     private char Letra;
-    private int portal;
+
+    @Id
+    @Column(name = "Portal")
+    private int Portal;
+
+    @Id
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Nombre_Calle")
+    @JoinColumn(name = "Nombre_Municipio")
     private String Nombre_Calle;
+
+    @Id
+    @Column(name = "Nombre_Municipio")
     private String Nombre_Municipio;
 
+    @ManyToMany(mappedBy = "direccion", cascade = CascadeType.ALL)
+    private Set<usuario_Identificado> usuarios_identificados;
+
+    @OneToMany(mappedBy = "direccion", cascade = CascadeType.ALL)
+    private Set<recogida> recogidas;
+
     public direccion(int num, int piso, char letra, int portal, String nombre_Calle, String nombre_Municipio) {
-        Num = num;
-        Piso = piso;
-        Letra = letra;
-        this.portal = portal;
-        Nombre_Calle = nombre_Calle;
-        Nombre_Municipio = nombre_Municipio;
+        this.Num = num;
+        this.Piso = piso;
+        this.Letra = letra;
+        this.Portal = portal;
+        this.Nombre_Calle = nombre_Calle;
+        this.Nombre_Municipio = nombre_Municipio;
     }
 
     //getters y setters
@@ -45,11 +73,11 @@ public class direccion {
     }
 
     public int getPortal() {
-        return portal;
+        return Portal;
     }
 
     public void setPortal(int portal) {
-        this.portal = portal;
+        this.Portal = portal;
     }
 
     public String getNombre_Calle() {
