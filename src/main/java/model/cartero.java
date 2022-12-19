@@ -38,6 +38,10 @@ public class cartero {
         Apellidos = apellidos;
     }
 
+    public cartero() {
+        //requerido
+    }
+
     //getters y setters
 
     public String getDNI_Cartero() {
