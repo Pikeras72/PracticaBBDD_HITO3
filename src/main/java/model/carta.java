@@ -43,6 +43,10 @@ public class carta {
         this.ID_Usuario_Generico_Emisor = ID_Usuario_Generico_Emisor;
     }
 
+    public carta() {
+        //requerido
+    }
+
     //getters y setters
 
     public String getID_Carta() {
