@@ -8,17 +8,17 @@ public class area_Envio {
 
     @Id
     @Column(name = "ID_Area_Envio")
-    private String ID_Area_Envio;//long?
+    private String ID_Area_Envio;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "Cod_Oficina")
-    private String Cod_Oficina;
+    private oficina Cod_Oficina;
 
     public area_Envio () {
         // requerido por Hibernate
     }
 
-    public area_Envio(String ID_Area_Envio, String cod_Oficina) {
+    public area_Envio(String ID_Area_Envio, oficina cod_Oficina) {
         this.ID_Area_Envio = ID_Area_Envio;
         this.Cod_Oficina = cod_Oficina;
     }
@@ -33,11 +33,11 @@ public class area_Envio {
         this.ID_Area_Envio = ID_Area_Envio;
     }
 
-    public String getCod_Oficina() {
+    public oficina getCod_Oficina() {
         return Cod_Oficina;
     }
 
-    public void setCod_Oficina(String cod_Oficina) {
+    public void setCod_Oficina(oficina cod_Oficina) {
         Cod_Oficina = cod_Oficina;
     }
 }

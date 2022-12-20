@@ -23,23 +23,23 @@ public class Controlador {
         this.session = sessionFactory.openSession();
     }
 
-    public usuario_Identificado createUsuarioIdentificado(String DNI_Usuario_Identificado, String Nombre, String Apellidos, String Mail, String DNI_Usuario_Identificado_Autorizado){
-        usuario_Identificado usuarioIdentificado = new usuario_Identificado(DNI_Usuario_Identificado,Nombre,Apellidos,Mail,DNI_Usuario_Identificado_Autorizado);
+    public usuario_Identificado createUsuarioIdentificado(String DNI_Usuario_Identificado, String Nombre, String Apellidos, String Mail){
+        usuario_Identificado usuarioIdentificado = new usuario_Identificado(DNI_Usuario_Identificado,Nombre,Apellidos,Mail);
         this.session.beginTransaction();
         this.session.save(usuarioIdentificado);
         this.session.getTransaction().commit();
         return usuarioIdentificado;
     }
 
-    public direccion createDireccion(int Num, int Piso, char Letra, int Portal, String Nombre_Calle, String Nombre_Municipio){
-        direccion direccion = new direccion(Num,Piso,Letra,Portal,Nombre_Calle,Nombre_Municipio);
+    public direccion createDireccion(int Num, int Piso, char Letra, int Portal, calle Nombre_Calle){
+        direccion direccion = new direccion(Num,Piso,Letra,Portal,Nombre_Calle);
         this.session.beginTransaction();
         this.session.save(direccion);
         this.session.getTransaction().commit();
         return direccion;
     }
 
-    public calle createCalle(String Nombre_Calle, String Nombre_Municipio) {
+    public calle createCalle(String Nombre_Calle, municipio Nombre_Municipio) {
         calle calle = new calle(Nombre_Calle,Nombre_Municipio);
         this.session.beginTransaction();
         this.session.save(calle);
@@ -47,7 +47,7 @@ public class Controlador {
         return calle;
     }
 
-    public municipio createMunicipio(String Nombre_Municipio, String Nombre_Provincia) {
+    public municipio createMunicipio(String Nombre_Municipio, provincia Nombre_Provincia) {
         municipio municipio = new municipio(Nombre_Municipio,Nombre_Provincia);
         this.session.beginTransaction();
         this.session.save(municipio);

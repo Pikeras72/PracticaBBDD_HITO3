@@ -3,23 +3,16 @@ package model;
 import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@Table(name = "centro_De_Clasificacion")
 public class centro_De_Clasificacion {
-
 
     @Id
     @Column(name = "Cod_Centro_Clas")
     private int Cod_Centro_Clas;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "Nombre_Municipio")
-    private String Nombre_Municipio;
-
     @Column(name = "Nombre_Centro_Clas", nullable = false)
-    @JoinColumn(name = "Nombre_Centro_Clas")
     private String Nombre_Centro_Clas;
-
-    @OneToMany(mappedBy = "centro_De_Clasificacion", cascade = CascadeType.ALL)
-    private Set<oficina> oficinas;
 
     @Column(name = "Capacidad_proces_paquetes", nullable = false)
     private int Capacidad_proces_paquetes;
@@ -27,8 +20,14 @@ public class centro_De_Clasificacion {
     @Column(name = "Capacidad_proces_cartas", nullable = false)
     private int Capacidad_proces_cartas;
 
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Nombre_Municipio")
+    private municipio Nombre_Municipio;
 
-    public centro_De_Clasificacion(int cod_Centro_Clas, String nombre_Centro_Clas, int capacidad_proces_paquetes, int capacidad_proces_cartas, String nombre_Municipio) {
+    @OneToMany(mappedBy = "centro_De_Clasificacion", cascade = CascadeType.ALL)
+    private Set<oficina> oficinas;
+
+    public centro_De_Clasificacion(int cod_Centro_Clas, String nombre_Centro_Clas, int capacidad_proces_paquetes, int capacidad_proces_cartas, municipio nombre_Municipio) {
         Cod_Centro_Clas = cod_Centro_Clas;
         Nombre_Centro_Clas = nombre_Centro_Clas;
         Capacidad_proces_paquetes = capacidad_proces_paquetes;

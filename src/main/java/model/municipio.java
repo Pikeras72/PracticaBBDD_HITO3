@@ -13,7 +13,7 @@ public class municipio {
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "Nombre_Provincia")
-    private String Nombre_Provincia;
+    private provincia Nombre_Provincia;
 
     @OneToMany(mappedBy = "municipio", cascade = CascadeType.ALL)
     private Set<calle> calles;
@@ -25,7 +25,7 @@ public class municipio {
         // requerido por Hibernate
     }
 
-    public municipio(String nombre_Municipio, String nombre_Provincia) {
+    public municipio(String nombre_Municipio, provincia nombre_Provincia) {
         this.Nombre_Municipio = nombre_Municipio;
         this.Nombre_Provincia = nombre_Provincia;
     }
@@ -40,11 +40,11 @@ public class municipio {
         Nombre_Municipio = nombre_Municipio;
     }
 
-    public String getNombre_Provincia() {
+    public provincia getNombre_Provincia() {
         return Nombre_Provincia;
     }
 
-    public void setNombre_Provincia(String nombre_Provincia) {
+    public void setNombre_Provincia(provincia nombre_Provincia) {
         Nombre_Provincia = nombre_Provincia;
     }
 }

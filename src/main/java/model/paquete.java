@@ -18,43 +18,37 @@ public class paquete {
     private int Peso;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_Recogida")
-    private int ID_Recogida;
+    private recogida ID_Recogida;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_Usuario_Generico")
-    private int ID_Usuario_Generico;
+    private usuario_Generico ID_Usuario_Generico;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_Usuario_Generico_Emisor")
-    private int ID_Usuario_Generico_Emisor;
+    private usuario_Generico ID_Usuario_Generico_Emisor;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_Reparto")
-    private int ID_Reparto;
+    private reparto ID_Reparto;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "DNI_Cartero")
-    private String DNI_Cartero;
+    private cartero DNI_Cartero;
     @Column(name = "Comentario", nullable = false)
     private String Comentario;
     @Column(name = "Fecha", nullable = false)
     private Date Fecha;
 
-    public paquete(String ID_Paquete, int altura, int ancho, int peso, int ID_Recogida, int ID_Usuario_Generico, int ID_Reparto, String DNI_Cartero, String comentario, Date fecha, int ID_Usuario_Generico_Emisor) {
+    public paquete(String ID_Paquete, int altura, int ancho, int peso, recogida ID_Recogida, usuario_Generico ID_Usuario_Generico, usuario_Generico ID_Usuario_Generico_Emisor, reparto ID_Reparto, cartero DNI_Cartero, String comentario, Date fecha) {
         this.ID_Paquete = ID_Paquete;
         Altura = altura;
         Ancho = ancho;
         Peso = peso;
         this.ID_Recogida = ID_Recogida;
         this.ID_Usuario_Generico = ID_Usuario_Generico;
+        this.ID_Usuario_Generico_Emisor = ID_Usuario_Generico_Emisor;
         this.ID_Reparto = ID_Reparto;
         this.DNI_Cartero = DNI_Cartero;
         Comentario = comentario;
         Fecha = fecha;
-        this.ID_Usuario_Generico_Emisor = ID_Usuario_Generico_Emisor;
     }
-
-    public paquete() {
-        //requerido
-    }
-
-    //getters y setters
 
     public String getID_Paquete() {
         return ID_Paquete;
@@ -88,35 +82,43 @@ public class paquete {
         Peso = peso;
     }
 
-    public int getID_Recogida() {
+    public recogida getID_Recogida() {
         return ID_Recogida;
     }
 
-    public void setID_Recogida(int ID_Recogida) {
+    public void setID_Recogida(recogida ID_Recogida) {
         this.ID_Recogida = ID_Recogida;
     }
 
-    public int getID_Usuario_Generico() {
+    public usuario_Generico getID_Usuario_Generico() {
         return ID_Usuario_Generico;
     }
 
-    public void setID_Usuario_Generico(int ID_Usuario_Generico) {
+    public void setID_Usuario_Generico(usuario_Generico ID_Usuario_Generico) {
         this.ID_Usuario_Generico = ID_Usuario_Generico;
     }
 
-    public int getID_Reparto() {
+    public usuario_Generico getID_Usuario_Generico_Emisor() {
+        return ID_Usuario_Generico_Emisor;
+    }
+
+    public void setID_Usuario_Generico_Emisor(usuario_Generico ID_Usuario_Generico_Emisor) {
+        this.ID_Usuario_Generico_Emisor = ID_Usuario_Generico_Emisor;
+    }
+
+    public reparto getID_Reparto() {
         return ID_Reparto;
     }
 
-    public void setID_Reparto(int ID_Reparto) {
+    public void setID_Reparto(reparto ID_Reparto) {
         this.ID_Reparto = ID_Reparto;
     }
 
-    public String getDNI_Cartero() {
+    public cartero getDNI_Cartero() {
         return DNI_Cartero;
     }
 
-    public void setDNI_Cartero(String DNI_Cartero) {
+    public void setDNI_Cartero(cartero DNI_Cartero) {
         this.DNI_Cartero = DNI_Cartero;
     }
 
@@ -134,13 +136,5 @@ public class paquete {
 
     public void setFecha(Date fecha) {
         Fecha = fecha;
-    }
-
-    public int getID_Usuario_Generico_Emisor() {
-        return ID_Usuario_Generico_Emisor;
-    }
-
-    public void setID_Usuario_Generico_Emisor(int ID_Usuario_Generico_Emisor) {
-        this.ID_Usuario_Generico_Emisor = ID_Usuario_Generico_Emisor;
     }
 }

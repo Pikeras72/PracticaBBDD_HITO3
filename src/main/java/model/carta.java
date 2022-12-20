@@ -9,7 +9,7 @@ public class carta {
 
     @Id
     @Column(name = "ID_Carta")
-    private String ID_Carta;//long?
+    private String ID_Carta;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "DNI_Cartero")

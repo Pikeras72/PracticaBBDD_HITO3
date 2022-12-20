@@ -3,11 +3,14 @@ package model;
 import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@Table(name = "direccion")
 public class direccion {
 
     @Id
     @Column(name = "Num")
     private int Num;
+
 
     @Id
     @Column(name = "Piso")
@@ -22,14 +25,12 @@ public class direccion {
     private int Portal;
 
     @Id
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "Nombre_Calle")
-    @JoinColumn(name = "Nombre_Municipio")
-    private String Nombre_Calle;
-
-    @Id
-    @Column(name = "Nombre_Municipio")
-    private String Nombre_Municipio;
+    @ManyToOne(optional = false,cascade = {CascadeType.ALL})
+    @JoinColumns({
+            @JoinColumn(name = "Nombre_Calle"),
+            @JoinColumn(name = "Nombre_Municipio")
+    })
+    private calle Nombre_Calle;
 
     @ManyToMany(mappedBy = "direccion", cascade = CascadeType.ALL)
     private Set<usuario_Identificado> usuarios_identificados;
@@ -37,13 +38,12 @@ public class direccion {
     @OneToMany(mappedBy = "direccion", cascade = CascadeType.ALL)
     private Set<recogida> recogidas;
 
-    public direccion(int num, int piso, char letra, int portal, String nombre_Calle, String nombre_Municipio) {
+    public direccion(int num, int piso, char letra, int portal, calle nombre_Calle) {
         this.Num = num;
         this.Piso = piso;
         this.Letra = letra;
         this.Portal = portal;
         this.Nombre_Calle = nombre_Calle;
-        this.Nombre_Municipio = nombre_Municipio;
     }
 
     //getters y setters
@@ -84,15 +84,8 @@ public class direccion {
         return Nombre_Calle;
     }
 
-    public void setNombre_Calle(String nombre_Calle) {
+    public void setNombre_Calle(calle nombre_Calle) {
         Nombre_Calle = nombre_Calle;
     }
 
-    public String getNombre_Municipio() {
-        return Nombre_Municipio;
-    }
-
-    public void setNombre_Municipio(String nombre_Municipio) {
-        Nombre_Municipio = nombre_Municipio;
-    }
 }

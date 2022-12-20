@@ -1,38 +1,38 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "oficina")
 public class oficina {
+
     @Id
-    @Column(name = "Cod_Oficina")
+    @Column(name = "id")
     private String Cod_Oficina;
 
-    private String  Nombre_Municipio;
-    private int Cod_Centro_Clas;
-    private int Num;
-    private int Piso;
-    private char Letra;
-    private int Portal;
-    private String Nombre_Calle;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Nombre_Municipio")
+    private municipio Nombre_Municipio;
 
-    public oficina(String cod_Oficina, String nombre_Municipio, int cod_Centro_Clas, int num, int piso, char letra, int portal, String nombre_Calle) {
+    @OneToMany(mappedBy = "Cod_Oficina", cascade = CascadeType.ALL)
+    private Set<area_Envio> area_Envios;
+
+    @OneToMany(mappedBy = "Cod_Oficina", cascade = CascadeType.ALL)
+    private Set<coche> coches;
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "Cod_Centro_Clas")
+    private centro_De_Clasificacion Cod_Centro_Clas;
+
+    public oficina () {
+        // requerido por Hibernate
+    }
+
+    public oficina(String cod_Oficina, municipio nombre_Municipio, centro_De_Clasificacion cod_Centro_Clas) {
         Cod_Oficina = cod_Oficina;
         Nombre_Municipio = nombre_Municipio;
         Cod_Centro_Clas = cod_Centro_Clas;
-        Num = num;
-        Piso = piso;
-        Letra = letra;
-        Portal = portal;
-        Nombre_Calle = nombre_Calle;
-    }
-
-    public oficina() {
-        //requerido
     }
 
     //getters y setters
@@ -45,59 +45,19 @@ public class oficina {
         Cod_Oficina = cod_Oficina;
     }
 
-    public String getNombre_Municipio() {
+    public municipio getNombre_Municipio() {
         return Nombre_Municipio;
     }
 
-    public void setNombre_Municipio(String nombre_Municipio) {
+    public void setNombre_Municipio(municipio nombre_Municipio) {
         Nombre_Municipio = nombre_Municipio;
     }
 
-    public int getCod_Centro_Clas() {
+    public centro_De_Clasificacion getCod_Centro_Clas() {
         return Cod_Centro_Clas;
     }
 
-    public void setCod_Centro_Clas(int cod_Centro_Clas) {
+    public void setCod_Centro_Clas(centro_De_Clasificacion cod_Centro_Clas) {
         Cod_Centro_Clas = cod_Centro_Clas;
-    }
-
-    public int getNum() {
-        return Num;
-    }
-
-    public void setNum(int num) {
-        Num = num;
-    }
-
-    public int getPiso() {
-        return Piso;
-    }
-
-    public void setPiso(int piso) {
-        Piso = piso;
-    }
-
-    public char getLetra() {
-        return Letra;
-    }
-
-    public void setLetra(char letra) {
-        Letra = letra;
-    }
-
-    public int getPortal() {
-        return Portal;
-    }
-
-    public void setPortal(int portal) {
-        Portal = portal;
-    }
-
-    public String getNombre_Calle() {
-        return Nombre_Calle;
-    }
-
-    public void setNombre_Calle(String nombre_Calle) {
-        Nombre_Calle = nombre_Calle;
     }
 }

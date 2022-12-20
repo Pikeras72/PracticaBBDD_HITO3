@@ -16,11 +16,9 @@ public class usuario_Identificado {
     @Column(name = "Mail", nullable = false)
     private String Mail;
 
-    @Column(name = "DNI_Usuario_Identificado_Autorizado", nullable = false)
-    private String DNI_Usuario_Identificado_Autorizado;
-
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "DNI_Usuario_Identificado_Autorizado")
+    private usuario_Identificado usuario_identificado;
 
     @OneToMany(mappedBy = "usuario_Identificado", cascade = CascadeType.ALL)
     private Set<usuario_Identificado> usuarios_Identificados;
@@ -34,17 +32,16 @@ public class usuario_Identificado {
     @OneToMany(mappedBy = "usuario_Identificado", cascade = CascadeType.ALL)
     private Set<carta_Cert> cartas_Cert_Emisor;
 
-    @ManyToMany(mappedBy = "usuario_Identificado", cascade = CascadeType.ALL)
+    @ManyToMany()
     @JoinTable(name = "vive_En")
     private Set<direccion> direcciones;
 
 
-    public usuario_Identificado(String DNI_Usuario_Identificado, String nombre, String apellidos, String mail, String DNI_Usuario_Identificado_Autorizado) {
+    public usuario_Identificado(String DNI_Usuario_Identificado, String nombre, String apellidos, String mail) {
         this.DNI_Usuario_Identificado = DNI_Usuario_Identificado;
         this.Nombre = nombre;
         this.Apellidos = apellidos;
         this.Mail = mail;
-        this.DNI_Usuario_Identificado_Autorizado = DNI_Usuario_Identificado_Autorizado;
     }
 
     public usuario_Identificado() {
@@ -83,13 +80,5 @@ public class usuario_Identificado {
 
     public void setMail(String mail) {
         Mail = mail;
-    }
-
-    public String getDNI_Usuario_Identificado_Autorizado() {
-        return DNI_Usuario_Identificado_Autorizado;
-    }
-
-    public void setDNI_Usuario_Identificado_Autorizado(String DNI_Usuario_Identificado_Autorizado) {
-        this.DNI_Usuario_Identificado_Autorizado = DNI_Usuario_Identificado_Autorizado;
     }
 }

@@ -9,15 +9,11 @@ public class segmento_De_Calle {
     @Id
     @GeneratedValue
     @Column(name = "Num_Segm")
-    private long Num_Segm;
+    private int Num_Segm;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "Nombre_Calle")
     private calle Nombre_Calle;
-    //PREGUNTAR
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "Nombre_Municipio")
-    private municipio Nombre_Municipio;
 
     @Column(name = "Num_Inicio")//, nullable = false)
     private int Num_Inicio;
@@ -29,10 +25,9 @@ public class segmento_De_Calle {
         // requerido por Hibernate
     }
 
-    public segmento_De_Calle(int num_Segm, calle nombre_Calle, municipio nombre_Municipio, int num_Inicio, int num_Final) {
+    public segmento_De_Calle(int num_Segm, calle nombre_Calle, int num_Inicio, int num_Final) {
         Num_Segm = num_Segm;
         Nombre_Calle = nombre_Calle;
-        Nombre_Municipio = nombre_Municipio;
         Num_Inicio = num_Inicio;
         Num_Final = num_Final;
     }
@@ -53,14 +48,6 @@ public class segmento_De_Calle {
 
     public void setNombre_Calle(calle nombre_Calle) {
         Nombre_Calle = nombre_Calle;
-    }
-
-    public municipio getNombre_Municipio() {
-        return Nombre_Municipio;
-    }
-
-    public void setNombre_Municipio(municipio nombre_Municipio) {
-        Nombre_Municipio = nombre_Municipio;
     }
 
     public int getNum_Inicio() {

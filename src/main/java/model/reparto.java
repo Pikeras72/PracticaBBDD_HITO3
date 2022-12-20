@@ -15,13 +15,13 @@ public class reparto {
     private Date Fecha_Creacion;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "DNI_Cartero")
-    private String DNI_Cartero;
+    private cartero DNI_Cartero;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "Matricula")
-    private String Matricula;
+    private coche Matricula;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_Ruta")
-    private int ID_Ruta;
+    private ruta ID_Ruta;
 
     @OneToMany(mappedBy = "reparto", cascade = CascadeType.ALL)
     private Set<carta_Cert> cartas_Cert;
@@ -29,19 +29,13 @@ public class reparto {
     @OneToMany(mappedBy = "reparto", cascade = CascadeType.ALL)
     private Set<paquete> paquetes;
 
-    public reparto(int ID_Reparto, Date fecha_Creacion, String DNI_Cartero, String matricula, int ID_Ruta) {
+    public reparto(int ID_Reparto, Date fecha_Creacion, cartero DNI_Cartero, coche matricula, ruta ID_Ruta) {
         this.ID_Reparto = ID_Reparto;
         Fecha_Creacion = fecha_Creacion;
         this.DNI_Cartero = DNI_Cartero;
         Matricula = matricula;
         this.ID_Ruta = ID_Ruta;
     }
-
-    public reparto() {
-        //requerido
-    }
-
-    //getters y setters
 
     public int getID_Reparto() {
         return ID_Reparto;
@@ -59,27 +53,27 @@ public class reparto {
         Fecha_Creacion = fecha_Creacion;
     }
 
-    public String getDNI_Cartero() {
+    public cartero getDNI_Cartero() {
         return DNI_Cartero;
     }
 
-    public void setDNI_Cartero(String DNI_Cartero) {
+    public void setDNI_Cartero(cartero DNI_Cartero) {
         this.DNI_Cartero = DNI_Cartero;
     }
 
-    public String getMatricula() {
+    public coche getMatricula() {
         return Matricula;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(coche matricula) {
         Matricula = matricula;
     }
 
-    public int getID_Ruta() {
+    public ruta getID_Ruta() {
         return ID_Ruta;
     }
 
-    public void setID_Ruta(int ID_Ruta) {
+    public void setID_Ruta(ruta ID_Ruta) {
         this.ID_Ruta = ID_Ruta;
     }
 }
