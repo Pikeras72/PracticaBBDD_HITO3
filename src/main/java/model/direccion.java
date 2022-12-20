@@ -80,7 +80,7 @@ public class direccion {
         this.Portal = portal;
     }
 
-    public String getNombre_Calle() {
+    public calle getNombre_Calle() {
         return Nombre_Calle;
     }
 

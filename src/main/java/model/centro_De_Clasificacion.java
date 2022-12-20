@@ -35,14 +35,20 @@ public class centro_De_Clasificacion {
         Nombre_Municipio = nombre_Municipio;
     }
 
-    //getters y setters
-
     public int getCod_Centro_Clas() {
         return Cod_Centro_Clas;
     }
 
     public void setCod_Centro_Clas(int cod_Centro_Clas) {
         Cod_Centro_Clas = cod_Centro_Clas;
+    }
+
+    public municipio getNombre_Municipio() {
+        return Nombre_Municipio;
+    }
+
+    public void setNombre_Municipio(municipio nombre_Municipio) {
+        Nombre_Municipio = nombre_Municipio;
     }
 
     public String getNombre_Centro_Clas() {
@@ -67,13 +73,5 @@ public class centro_De_Clasificacion {
 
     public void setCapacidad_proces_cartas(int capacidad_proces_cartas) {
         Capacidad_proces_cartas = capacidad_proces_cartas;
-    }
-
-    public String getNombre_Municipio() {
-        return Nombre_Municipio;
-    }
-
-    public void setNombre_Municipio(String nombre_Municipio) {
-        Nombre_Municipio = nombre_Municipio;
     }
 }
