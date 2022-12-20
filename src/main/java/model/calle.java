@@ -1,20 +1,21 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "calle")
-public class calle {
+public class calle implements Serializable {
 
     @Id
-    @Column(name = "Nombre_Calle")
+    @Column(name = "Nombre_Calle", length = 50)
     private String Nombre_Calle;
 
     @Id
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "Nombre_Municipio")
-    private municipio Nombre_Municipio;
+    private municipio municipio;
 
     @OneToMany(mappedBy = "calle", cascade = CascadeType.ALL)
     private Set<segmento_De_Calle> segmentos_De_Calle;
@@ -27,8 +28,8 @@ public class calle {
     }
 
     public calle(String nombre_Calle, municipio nombre_Municipio) {
-        Nombre_Calle = nombre_Calle;
-        Nombre_Municipio = nombre_Municipio;
+        this.Nombre_Calle = nombre_Calle;
+        this.municipio = nombre_Municipio;
     }
 
     //getters y setters
@@ -40,11 +41,11 @@ public class calle {
         Nombre_Calle = nombre_Calle;
     }
 
-    public municipio getNombre_Municipio() {
-        return Nombre_Municipio;
+    public model.municipio getMunicipio() {
+        return municipio;
     }
 
-    public void setNombre_Municipio(municipio nombre_Municipio) {
-        Nombre_Municipio = nombre_Municipio;
+    public void setMunicipio(model.municipio municipio) {
+        this.municipio = municipio;
     }
 }

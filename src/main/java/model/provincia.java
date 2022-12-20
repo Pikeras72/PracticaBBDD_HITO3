@@ -8,11 +8,11 @@ import java.util.Set;
 public class provincia {
 
     @Id
-    @Column(name = "Nombre_Provincia")
+    @Column(name = "Nombre_Provincia", length = 50)
     private String Nombre_Provincia;
 
     @OneToMany(mappedBy = "provincia", cascade = CascadeType.ALL)
-    private Set<municipio> municipios;
+    private Set<municipio> municipio;
 
     public provincia(String nombre_Provincia) {
         Nombre_Provincia = nombre_Provincia;

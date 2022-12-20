@@ -12,30 +12,30 @@ public class carta_Cert {
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "DNI_Cartero")
-    private cartero DNI_Cartero;
+    private cartero cartero;
 
     @Column(name = "Nivel_Urgencia", nullable = false)
     private int Nivel_Urgencia;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_Reparto")
-    private reparto ID_Reparto;
+    private reparto reparto;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "DNI_Usuario_Identificado")
-    private usuario_Identificado DNI_Usuario_Identificado;
+    private usuario_Identificado usuario_Identificado;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "DNI_Usuario_Identificado_Emisor")
-    private usuario_Identificado DNI_Usuario_Identificado_Emisor;
+    private usuario_Identificado usuario_Identificado_Emisor;
 
     public carta_Cert(String ID_carta_Cert, cartero DNI_Cartero, int nivel_Urgencia, reparto ID_Reparto, usuario_Identificado DNI_Usuario_Identificado, usuario_Identificado DNI_Usuario_Identificado_Emisor) {
         this.ID_carta_Cert = ID_carta_Cert;
-        this.DNI_Cartero = DNI_Cartero;
+        this.cartero = DNI_Cartero;
         Nivel_Urgencia = nivel_Urgencia;
-        this.ID_Reparto = ID_Reparto;
-        this.DNI_Usuario_Identificado = DNI_Usuario_Identificado;
-        this.DNI_Usuario_Identificado_Emisor = DNI_Usuario_Identificado_Emisor;
+        this.reparto = ID_Reparto;
+        this.usuario_Identificado = DNI_Usuario_Identificado;
+        this.usuario_Identificado_Emisor = DNI_Usuario_Identificado_Emisor;
     }
 
     public carta_Cert() {
@@ -52,12 +52,12 @@ public class carta_Cert {
         this.ID_carta_Cert = ID_carta_Cert;
     }
 
-    public cartero getDNI_Cartero() {
-        return DNI_Cartero;
+    public model.cartero getCartero() {
+        return cartero;
     }
 
-    public void setDNI_Cartero(cartero DNI_Cartero) {
-        this.DNI_Cartero = DNI_Cartero;
+    public void setCartero(model.cartero cartero) {
+        this.cartero = cartero;
     }
 
     public int getNivel_Urgencia() {
@@ -68,27 +68,27 @@ public class carta_Cert {
         Nivel_Urgencia = nivel_Urgencia;
     }
 
-    public reparto getID_Reparto() {
-        return ID_Reparto;
+    public model.reparto getReparto() {
+        return reparto;
     }
 
-    public void setID_Reparto(reparto ID_Reparto) {
-        this.ID_Reparto = ID_Reparto;
+    public void setReparto(model.reparto reparto) {
+        this.reparto = reparto;
     }
 
-    public usuario_Identificado getDNI_Usuario_Identificado() {
-        return DNI_Usuario_Identificado;
+    public model.usuario_Identificado getUsuario_Identificado() {
+        return usuario_Identificado;
     }
 
-    public void setDNI_Usuario_Identificado(usuario_Identificado DNI_Usuario_Identificado) {
-        this.DNI_Usuario_Identificado = DNI_Usuario_Identificado;
+    public void setUsuario_Identificado(model.usuario_Identificado usuario_Identificado) {
+        this.usuario_Identificado = usuario_Identificado;
     }
 
-    public usuario_Identificado getDNI_Usuario_Identificado_Emisor() {
-        return DNI_Usuario_Identificado_Emisor;
+    public model.usuario_Identificado getUsuario_Identificado_Emisor() {
+        return usuario_Identificado_Emisor;
     }
 
-    public void setDNI_Usuario_Identificado_Emisor(usuario_Identificado DNI_Usuario_Identificado_Emisor) {
-        this.DNI_Usuario_Identificado_Emisor = DNI_Usuario_Identificado_Emisor;
+    public void setUsuario_Identificado_Emisor(model.usuario_Identificado usuario_Identificado_Emisor) {
+        this.usuario_Identificado_Emisor = usuario_Identificado_Emisor;
     }
 }

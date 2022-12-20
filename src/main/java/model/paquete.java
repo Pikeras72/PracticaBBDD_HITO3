@@ -18,19 +18,19 @@ public class paquete {
     private int Peso;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_Recogida")
-    private recogida ID_Recogida;
+    private recogida recogida;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_Usuario_Generico")
-    private usuario_Generico ID_Usuario_Generico;
+    private usuario_Generico usuario_Generico;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_Usuario_Generico_Emisor")
-    private usuario_Generico ID_Usuario_Generico_Emisor;
+    private usuario_Generico usuario_Generico_Emisor;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_Reparto")
-    private reparto ID_Reparto;
+    private reparto reparto;
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "DNI_Cartero")
-    private cartero DNI_Cartero;
+    private cartero cartero;
     @Column(name = "Comentario", nullable = false)
     private String Comentario;
     @Column(name = "Fecha", nullable = false)
@@ -41,13 +41,17 @@ public class paquete {
         Altura = altura;
         Ancho = ancho;
         Peso = peso;
-        this.ID_Recogida = ID_Recogida;
-        this.ID_Usuario_Generico = ID_Usuario_Generico;
-        this.ID_Usuario_Generico_Emisor = ID_Usuario_Generico_Emisor;
-        this.ID_Reparto = ID_Reparto;
-        this.DNI_Cartero = DNI_Cartero;
+        this.recogida = ID_Recogida;
+        this.usuario_Generico = ID_Usuario_Generico;
+        this.usuario_Generico_Emisor = ID_Usuario_Generico_Emisor;
+        this.reparto = ID_Reparto;
+        this.cartero = DNI_Cartero;
         Comentario = comentario;
         Fecha = fecha;
+    }
+
+    public paquete() {
+        //requerido
     }
 
     public String getID_Paquete() {
@@ -82,44 +86,44 @@ public class paquete {
         Peso = peso;
     }
 
-    public recogida getID_Recogida() {
-        return ID_Recogida;
+    public model.recogida getRecogida() {
+        return recogida;
     }
 
-    public void setID_Recogida(recogida ID_Recogida) {
-        this.ID_Recogida = ID_Recogida;
+    public void setRecogida(model.recogida recogida) {
+        this.recogida = recogida;
     }
 
-    public usuario_Generico getID_Usuario_Generico() {
-        return ID_Usuario_Generico;
+    public model.usuario_Generico getUsuario_Generico() {
+        return usuario_Generico;
     }
 
-    public void setID_Usuario_Generico(usuario_Generico ID_Usuario_Generico) {
-        this.ID_Usuario_Generico = ID_Usuario_Generico;
+    public void setUsuario_Generico(model.usuario_Generico usuario_Generico) {
+        this.usuario_Generico = usuario_Generico;
     }
 
-    public usuario_Generico getID_Usuario_Generico_Emisor() {
-        return ID_Usuario_Generico_Emisor;
+    public model.usuario_Generico getUsuario_Generico_Emisor() {
+        return usuario_Generico_Emisor;
     }
 
-    public void setID_Usuario_Generico_Emisor(usuario_Generico ID_Usuario_Generico_Emisor) {
-        this.ID_Usuario_Generico_Emisor = ID_Usuario_Generico_Emisor;
+    public void setUsuario_Generico_Emisor(model.usuario_Generico usuario_Generico_Emisor) {
+        this.usuario_Generico_Emisor = usuario_Generico_Emisor;
     }
 
-    public reparto getID_Reparto() {
-        return ID_Reparto;
+    public model.reparto getReparto() {
+        return reparto;
     }
 
-    public void setID_Reparto(reparto ID_Reparto) {
-        this.ID_Reparto = ID_Reparto;
+    public void setReparto(model.reparto reparto) {
+        this.reparto = reparto;
     }
 
-    public cartero getDNI_Cartero() {
-        return DNI_Cartero;
+    public model.cartero getCartero() {
+        return cartero;
     }
 
-    public void setDNI_Cartero(cartero DNI_Cartero) {
-        this.DNI_Cartero = DNI_Cartero;
+    public void setCartero(model.cartero cartero) {
+        this.cartero = cartero;
     }
 
     public String getComentario() {

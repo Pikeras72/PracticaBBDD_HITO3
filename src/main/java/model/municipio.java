@@ -8,12 +8,12 @@ import java.util.Set;
 public class municipio {
 
     @Id
-    @Column(name = "Nombre_Municipio")
+    @Column(name = "Nombre_Municipio", length = 50)
     private String Nombre_Municipio;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "Nombre_Provincia")
-    private provincia Nombre_Provincia;
+    private provincia provincia;
 
     @OneToMany(mappedBy = "municipio", cascade = CascadeType.ALL)
     private Set<calle> calles;
@@ -27,7 +27,7 @@ public class municipio {
 
     public municipio(String nombre_Municipio, provincia nombre_Provincia) {
         this.Nombre_Municipio = nombre_Municipio;
-        this.Nombre_Provincia = nombre_Provincia;
+        this.provincia = nombre_Provincia;
     }
 
     //getters y setters
@@ -40,11 +40,11 @@ public class municipio {
         Nombre_Municipio = nombre_Municipio;
     }
 
-    public provincia getNombre_Provincia() {
-        return Nombre_Provincia;
+    public model.provincia getProvincia() {
+        return provincia;
     }
 
-    public void setNombre_Provincia(provincia nombre_Provincia) {
-        Nombre_Provincia = nombre_Provincia;
+    public void setProvincia(model.provincia provincia) {
+        this.provincia = provincia;
     }
 }

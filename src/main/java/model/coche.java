@@ -3,11 +3,16 @@ package model;
 import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@Table(name = "coche")
 public class coche {
 
     @Id
     @Column(name = "Matricula")
     private String Matricula;
+
+    @Column(name = "Capacidad", nullable = false)
+    private float Capacidad;
 
     @OneToMany(mappedBy = "coche", cascade = CascadeType.ALL)
     private Set<reparto> repartos;
@@ -16,13 +21,14 @@ public class coche {
     @JoinColumn(name = "Cod_Oficina")
     private oficina Cod_Oficina;
 
-    @Column(name = "Capacidad", nullable = false)
-    private float Capacidad;
-
     public coche(String matricula, float capacidad, oficina cod_Oficina) {
         Matricula = matricula;
         Capacidad = capacidad;
         Cod_Oficina = cod_Oficina;
+    }
+
+    public coche() {
+        //requerido
     }
 
     //getters y setters

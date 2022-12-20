@@ -11,9 +11,12 @@ public class segmento_De_Calle {
     @Column(name = "Num_Segm")
     private int Num_Segm;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "Nombre_Calle")
-    private calle Nombre_Calle;
+    @ManyToOne(optional = false,cascade = {CascadeType.ALL})
+    @JoinColumns({
+            @JoinColumn(name = "Nombre_Calle"),
+            @JoinColumn(name = "Nombre_Municipio")
+    })
+    private calle calle;
 
     @Column(name = "Num_Inicio")//, nullable = false)
     private int Num_Inicio;
@@ -27,7 +30,7 @@ public class segmento_De_Calle {
 
     public segmento_De_Calle(int num_Segm, calle nombre_Calle, int num_Inicio, int num_Final) {
         Num_Segm = num_Segm;
-        Nombre_Calle = nombre_Calle;
+        calle = nombre_Calle;
         Num_Inicio = num_Inicio;
         Num_Final = num_Final;
     }
@@ -42,12 +45,12 @@ public class segmento_De_Calle {
         Num_Segm = num_Segm;
     }
 
-    public calle getNombre_Calle() {
-        return Nombre_Calle;
+    public model.calle getCalle() {
+        return calle;
     }
 
-    public void setNombre_Calle(calle nombre_Calle) {
-        Nombre_Calle = nombre_Calle;
+    public void setCalle(model.calle calle) {
+        this.calle = calle;
     }
 
     public int getNum_Inicio() {

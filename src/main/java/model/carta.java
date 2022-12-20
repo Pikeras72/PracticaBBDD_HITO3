@@ -13,7 +13,7 @@ public class carta {
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "DNI_Cartero")
-    private cartero DNI_Cartero;
+    private cartero cartero;
 
     @Column(name = "Formato", nullable = false)
     private String Formato;
@@ -35,7 +35,7 @@ public class carta {
 
     public carta(String ID_Carta, cartero DNI_Cartero, String formato, reparto ID_Reparto, usuario_Generico ID_Usuario_Generico, Date fecha, usuario_Generico ID_Usuario_Generico_Emisor) {
         this.ID_Carta = ID_Carta;
-        this.DNI_Cartero = DNI_Cartero;
+        this.cartero = DNI_Cartero;
         Formato = formato;
         this.ID_Reparto = ID_Reparto;
         this.ID_Usuario_Generico = ID_Usuario_Generico;
@@ -57,12 +57,13 @@ public class carta {
         this.ID_Carta = ID_Carta;
     }
 
-    public cartero getDNI_Cartero() {
-        return DNI_Cartero;
+
+    public model.cartero getCartero() {
+        return cartero;
     }
 
-    public void setDNI_Cartero(cartero DNI_Cartero) {
-        this.DNI_Cartero = DNI_Cartero;
+    public void setCartero(model.cartero cartero) {
+        this.cartero = cartero;
     }
 
     public String getFormato() {

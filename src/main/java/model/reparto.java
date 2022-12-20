@@ -11,17 +11,21 @@ public class reparto {
     @Id
     @Column(name = "ID_Reparto")
     private int ID_Reparto;
+
     @Column(name = "Fecha_Creacion", nullable = false)
     private Date Fecha_Creacion;
+
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "DNI_Cartero")
-    private cartero DNI_Cartero;
+    private cartero cartero;
+
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "Matricula")
-    private coche Matricula;
+    private coche coche;
+
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "ID_Ruta")
-    private ruta ID_Ruta;
+    private ruta ruta;
 
     @OneToMany(mappedBy = "reparto", cascade = CascadeType.ALL)
     private Set<carta_Cert> cartas_Cert;
@@ -31,10 +35,14 @@ public class reparto {
 
     public reparto(int ID_Reparto, Date fecha_Creacion, cartero DNI_Cartero, coche matricula, ruta ID_Ruta) {
         this.ID_Reparto = ID_Reparto;
-        Fecha_Creacion = fecha_Creacion;
-        this.DNI_Cartero = DNI_Cartero;
-        Matricula = matricula;
-        this.ID_Ruta = ID_Ruta;
+        this.Fecha_Creacion = fecha_Creacion;
+        this.cartero = DNI_Cartero;
+        this.coche = matricula;
+        this.ruta = ID_Ruta;
+    }
+
+    public reparto() {
+        //requerido
     }
 
     public int getID_Reparto() {
@@ -53,27 +61,27 @@ public class reparto {
         Fecha_Creacion = fecha_Creacion;
     }
 
-    public cartero getDNI_Cartero() {
-        return DNI_Cartero;
+    public model.cartero getCartero() {
+        return cartero;
     }
 
-    public void setDNI_Cartero(cartero DNI_Cartero) {
-        this.DNI_Cartero = DNI_Cartero;
+    public void setCartero(model.cartero cartero) {
+        this.cartero = cartero;
     }
 
-    public coche getMatricula() {
-        return Matricula;
+    public model.ruta getRuta() {
+        return ruta;
     }
 
-    public void setMatricula(coche matricula) {
-        Matricula = matricula;
+    public void setRuta(model.ruta ruta) {
+        this.ruta = ruta;
     }
 
-    public ruta getID_Ruta() {
-        return ID_Ruta;
+    public model.coche getCoche() {
+        return coche;
     }
 
-    public void setID_Ruta(ruta ID_Ruta) {
-        this.ID_Ruta = ID_Ruta;
+    public void setCoche(model.coche coche) {
+        this.coche = coche;
     }
 }

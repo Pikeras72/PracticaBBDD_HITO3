@@ -22,7 +22,7 @@ public class centro_De_Clasificacion {
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "Nombre_Municipio")
-    private municipio Nombre_Municipio;
+    private municipio municipio;
 
     @OneToMany(mappedBy = "centro_De_Clasificacion", cascade = CascadeType.ALL)
     private Set<oficina> oficinas;
@@ -32,7 +32,11 @@ public class centro_De_Clasificacion {
         Nombre_Centro_Clas = nombre_Centro_Clas;
         Capacidad_proces_paquetes = capacidad_proces_paquetes;
         Capacidad_proces_cartas = capacidad_proces_cartas;
-        Nombre_Municipio = nombre_Municipio;
+        municipio = nombre_Municipio;
+    }
+
+    public centro_De_Clasificacion() {
+        //requerido
     }
 
     public int getCod_Centro_Clas() {
@@ -43,12 +47,12 @@ public class centro_De_Clasificacion {
         Cod_Centro_Clas = cod_Centro_Clas;
     }
 
-    public municipio getNombre_Municipio() {
-        return Nombre_Municipio;
+    public model.municipio getMunicipio() {
+        return municipio;
     }
 
-    public void setNombre_Municipio(municipio nombre_Municipio) {
-        Nombre_Municipio = nombre_Municipio;
+    public void setMunicipio(model.municipio municipio) {
+        this.municipio = municipio;
     }
 
     public String getNombre_Centro_Clas() {

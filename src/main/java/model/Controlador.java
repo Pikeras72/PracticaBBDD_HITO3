@@ -23,10 +23,10 @@ public class Controlador {
         this.session = sessionFactory.openSession();
     }
 
-    public usuario_Identificado createUsuarioIdentificado(String DNI_Usuario_Identificado, String Nombre, String Apellidos, String Mail){
-        usuario_Identificado usuarioIdentificado = new usuario_Identificado(DNI_Usuario_Identificado,Nombre,Apellidos,Mail);
+    public usuario_Identificado createUsuarioIdentificado(String DNI_Usuario_Identificado, String Nombre, String Apellidos, String Mail,usuario_Identificado usuario_identificado){
+        usuario_Identificado usuarioIdentificado = new usuario_Identificado(DNI_Usuario_Identificado,Nombre,Apellidos,Mail,usuario_identificado);
         this.session.beginTransaction();
-        this.session.save(usuarioIdentificado);
+        this.session.saveOrUpdate(usuarioIdentificado);
         this.session.getTransaction().commit();
         return usuarioIdentificado;
     }
@@ -34,7 +34,7 @@ public class Controlador {
     public direccion createDireccion(int Num, int Piso, char Letra, int Portal, calle Nombre_Calle){
         direccion direccion = new direccion(Num,Piso,Letra,Portal,Nombre_Calle);
         this.session.beginTransaction();
-        this.session.save(direccion);
+        this.session.saveOrUpdate(direccion);
         this.session.getTransaction().commit();
         return direccion;
     }
@@ -42,7 +42,7 @@ public class Controlador {
     public calle createCalle(String Nombre_Calle, municipio Nombre_Municipio) {
         calle calle = new calle(Nombre_Calle,Nombre_Municipio);
         this.session.beginTransaction();
-        this.session.save(calle);
+        this.session.saveOrUpdate(calle);
         this.session.getTransaction().commit();
         return calle;
     }
@@ -50,7 +50,7 @@ public class Controlador {
     public municipio createMunicipio(String Nombre_Municipio, provincia Nombre_Provincia) {
         municipio municipio = new municipio(Nombre_Municipio,Nombre_Provincia);
         this.session.beginTransaction();
-        this.session.save(municipio);
+        this.session.saveOrUpdate(municipio);
         this.session.getTransaction().commit();
         return municipio;
     }
@@ -58,7 +58,7 @@ public class Controlador {
     public provincia createProvincia(String Nombre_Provincia) {
         provincia provincia = new provincia(Nombre_Provincia);
         this.session.beginTransaction();
-        this.session.save(provincia);
+        this.session.saveOrUpdate(provincia);
         this.session.getTransaction().commit();
         return provincia;
     }

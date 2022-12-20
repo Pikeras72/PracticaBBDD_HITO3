@@ -14,14 +14,22 @@ public class recogida {
     private Date Fecha_recogida;
 
     @ManyToOne(optional = false,cascade = {CascadeType.ALL})
-    @JoinColumn(name = "direccion")
+    @JoinColumns({
+            @JoinColumn(name = "Num"),
+            @JoinColumn(name = "Piso"),
+            @JoinColumn(name = "Letra"),
+            @JoinColumn(name = "Portal"),
+            @JoinColumn(name = "Nombre_Calle"),
+            @JoinColumn(name = "Nombre_Municipio")
+    })
     private direccion direccion;
+
     @ManyToOne(optional = false,cascade = {CascadeType.ALL})
     @JoinColumn(name = "cartero")
-    private cartero DNI_Cartero;
+    private cartero cartero;
     @ManyToOne(optional = false, cascade = {CascadeType.ALL})
     @JoinColumn(name = "usuarioVerificado")
-    private usuario_Identificado DNI_Usuario_Identificado;
+    private usuario_Identificado usuario_Identificado;
 
     @OneToMany(mappedBy = "recogida", cascade = CascadeType.ALL)
     private Set<paquete> paquetes;
@@ -30,8 +38,12 @@ public class recogida {
         this.ID_Recogida = ID_Recogida;
         Fecha_recogida = fecha_recogida;
         this.direccion = direccion;
-        this.DNI_Cartero = DNI_Cartero;
-        this.DNI_Usuario_Identificado = DNI_Usuario_Identificado;
+        this.cartero = DNI_Cartero;
+        this.usuario_Identificado = DNI_Usuario_Identificado;
+    }
+
+    public recogida() {
+        //requerido
     }
 
     public int getID_Recogida() {
@@ -58,19 +70,19 @@ public class recogida {
         this.direccion = direccion;
     }
 
-    public cartero getDNI_Cartero() {
-        return DNI_Cartero;
+    public model.cartero getCartero() {
+        return cartero;
     }
 
-    public void setDNI_Cartero(cartero DNI_Cartero) {
-        this.DNI_Cartero = DNI_Cartero;
+    public void setCartero(model.cartero cartero) {
+        this.cartero = cartero;
     }
 
-    public usuario_Identificado getDNI_Usuario_Identificado() {
-        return DNI_Usuario_Identificado;
+    public model.usuario_Identificado getUsuario_Identificado() {
+        return usuario_Identificado;
     }
 
-    public void setDNI_Usuario_Identificado(usuario_Identificado DNI_Usuario_Identificado) {
-        this.DNI_Usuario_Identificado = DNI_Usuario_Identificado;
+    public void setUsuario_Identificado(model.usuario_Identificado usuario_Identificado) {
+        this.usuario_Identificado = usuario_Identificado;
     }
 }

@@ -14,7 +14,7 @@
     <session-factory>
 
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/prueba</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/</property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
 
@@ -31,6 +31,12 @@
         <mapping class="model.municipio"/>
         <mapping class="model.cartero"/>
         <mapping class="model.centro_De_Clasificacion"/>
+        <mapping class="model.segmento_De_Calle"/>
+        <mapping class="model.area_Envio"/>
+        <mapping class="model.carta"/>
+        <mapping class="model.carta_Cert"/>
+        <mapping class="model.paquete"/>
+        <mapping class="model.turno"/>
         <mapping class="model.direccion"/>
         <mapping class="model.provincia"/>
         <mapping class="model.recogida"/>
@@ -38,6 +44,7 @@
         <mapping class="model.ruta"/>
         <mapping class="model.usuario_Generico"/>
         <mapping class="model.usuario_Identificado"/>
+        <mapping class="model.coche"/>
     </session-factory>
 
 </hibernate-configuration>

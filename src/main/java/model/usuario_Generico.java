@@ -14,8 +14,15 @@ public class usuario_Generico {
     @Column(name = "Apellidos", nullable = false)
     private String Apellidos;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "direccion")
+    @ManyToOne(optional = false,cascade = {CascadeType.ALL})
+    @JoinColumns({
+            @JoinColumn(name = "Num"),
+            @JoinColumn(name = "Piso"),
+            @JoinColumn(name = "Letra"),
+            @JoinColumn(name = "Portal"),
+            @JoinColumn(name = "Nombre_Calle"),
+            @JoinColumn(name = "Nombre_Municipio")
+    })
     private direccion direccion;
 
     @OneToMany(mappedBy = "usuario_Generico", cascade = CascadeType.ALL)
@@ -24,10 +31,11 @@ public class usuario_Generico {
     @OneToMany(mappedBy = "usuario_Generico", cascade = CascadeType.ALL)
     private Set<paquete> paquetes_Emisor;
 
-    public usuario_Generico(int ID_Usuario_Generico, String nombre, String apellidos, int num, int piso, char letra, int portal, String nombre_Calle, String nombre_Municipio) {
+    public usuario_Generico(int ID_Usuario_Generico, String nombre, String apellidos, direccion direccion) {
         this.ID_Usuario_Generico = ID_Usuario_Generico;
         this.Nombre = nombre;
         this.Apellidos = apellidos;
+        this.direccion = direccion;
     }
 
     public usuario_Generico() {
