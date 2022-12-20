@@ -39,7 +39,7 @@ public class Main {
         //PASO 2->
         try {
             //cambiar dependiendo de cada ordenador
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/practicaBD?user=root&password=");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/practicabd?user=root&password=");
         } catch (SQLException e) {
             e.printStackTrace();
         }
