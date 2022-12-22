@@ -40,11 +40,6 @@ public class Main {
             System.out.println(direccion1.getCalle().getNombre_Calle()+" Municipio: "+direccion1.getCalle().getMunicipio()+" Num: "+direccion1.getNum()+" Letra: "+direccion1.getLetra()+" Portal: "+direccion1.getPortal()+" Piso: "+direccion1.getPiso());
         }
 
-        /*
-        select *
-            from vive_en
-        */
-
         controlador.getSession().close();
     }
 }

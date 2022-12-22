@@ -54,6 +54,7 @@ public class Main {
         System.out.println("\n ----------------- Añadir nuevo cartero: ----------------- ");
         System.out.println("Nuevo cartero: "+dni+", "+nombre+", "+apellidos);
         stmt.executeUpdate();
+        stmt.close();
     }
 
     public static List<Cartero> carterosRepartoCochePeriodo(int periodo) throws SQLException {
@@ -71,7 +72,7 @@ public class Main {
             Cartero cartero = new Cartero(dni,nombre,apellidos);
             carteros.add(cartero);
         }
-        rs.close();
+        stmt.close();
         return carteros;
     }
 
@@ -95,7 +96,7 @@ public class Main {
             Oficina oficina=new Oficina(Cod_Oficina,Nombre_Municipio,Cod_Centro_Clas,Num,Piso,Letra.charAt(0),Portal,Nombre_Calle);
             oficinas.add(oficina);
         }
-        rs.close();
+        stmt.close();
         return oficinas;
     }
 
@@ -113,7 +114,7 @@ public class Main {
             String matricula = rs.getString("Matricula");
             coches+="Coche "+cnt+++": "+matricula+"\n";
         }
-        rs.close();
+        stmt.close();
         return coches;
     }
 }
